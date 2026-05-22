@@ -10,7 +10,7 @@ public record GooglePlaceDto(
 
         String nationalPhoneNumber,
 
-        String formattedAddress,
+        List<AddressComponentDto> addressComponents,
 
         Double rating,
 
@@ -20,7 +20,8 @@ public record GooglePlaceDto(
 
         Integer userRatingCount,
 
-        DisplayNameDto displayName
+        DisplayNameDto displayName,
 
+        List<PhotoDto> photos
 ) {
 }

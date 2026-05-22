@@ -39,7 +39,6 @@ public class GooglePlacesClient {
         headers.set(
                 "X-Goog-FieldMask",
                 "places.displayName," +
-                        "places.formattedAddress," +
                         "places.rating," +
                         "places.userRatingCount," +
                         "places.websiteUri," +
@@ -47,7 +46,9 @@ public class GooglePlacesClient {
                         "places.priceLevel," +
                         "places.id," +
                         "places.types," +
-                        "places.googleMapsUri"
+                        "places.googleMapsUri," +
+                        "places.addressComponents," +
+                        "places.photos"
         );
         return headers;
     }
