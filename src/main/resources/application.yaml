@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: salon-explorer
+
+google:
+  api: AIzaSyD5GXfdq7cB7n64j2R5hej7Et2W26Bp57k
