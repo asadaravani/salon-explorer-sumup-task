@@ -1,9 +1,6 @@
 package com.example.salonexplorer.backend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import java.util.List;
@@ -15,8 +12,12 @@ import java.util.List;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Salon {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
+    @Embedded
+    Address address;
 
     String externalId;
     String name;
@@ -25,7 +26,6 @@ public class Salon {
     String gMapsUri;
     Integer userRatingCount;
     Double rating;
-    String address;
     List<String> types;
-
+    List<String> photoIds;
 }

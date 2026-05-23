@@ -1,15 +1,14 @@
 package com.example.salonexplorer.backend.mapper;
 
 import com.example.salonexplorer.backend.client.dto.GooglePlaceDto;
-import com.example.salonexplorer.backend.client.dto.GooglePlacesResponseDto;
 import com.example.salonexplorer.backend.entity.Salon;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GooglePlaceMapper {
-    public List<Salon> toEntities(GooglePlacesResponseDto dto) {
+public class GooglePlaceDtoMapper {
+    public List<Salon> toEntities(List<GooglePlaceDto> list) {
         List<Salon> salons = new ArrayList<>();
-        dto.places().forEach(place -> {
+        list.forEach(place -> {
             if (place != null)
                 salons.add(toEntity(place));
         });
