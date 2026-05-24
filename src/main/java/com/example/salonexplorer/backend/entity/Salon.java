@@ -11,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@ToString
 public class Salon {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,13 +20,20 @@ public class Salon {
     @Embedded
     Address address;
 
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "salon_photos")
+    List<Photo> photos;
+
+    @Column(columnDefinition = "TEXT")
+    String websiteUrl;
+
+    @Column(columnDefinition = "TEXT")
+    String gMapsUri;
+
     String externalId;
     String name;
     String phoneNumber;
-    String website;
-    String gMapsUri;
     Integer userRatingCount;
     Double rating;
     List<String> types;
-    List<String> photoIds;
 }

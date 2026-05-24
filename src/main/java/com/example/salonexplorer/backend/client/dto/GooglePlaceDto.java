@@ -22,6 +22,6 @@ public record GooglePlaceDto(
 
         DisplayNameDto displayName,
 
-        List<PhotoDto> photos
+        List<GooglePlacePhotoDto> photos
 ) {
 }

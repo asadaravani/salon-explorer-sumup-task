@@ -2,7 +2,7 @@ package com.example.salonexplorer.backend.client.dto;
 
 import java.util.List;
 
-public record PhotoDto(
+public record GooglePlacePhotoDto(
 
         String name,
 
