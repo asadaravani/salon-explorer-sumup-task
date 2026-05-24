@@ -32,12 +32,18 @@ public class SalonDtoMapper {
     }
 
     public SalonPreviewDto mapToPreviewDto(Salon salon) {
+        String photoUrl = null;
+
+        if (salon.getPhotos() != null && !salon.getPhotos().isEmpty()) {
+            photoUrl = generatePreviewPhoto(salon.getPhotos().get(0));
+        }
+
         return new SalonPreviewDto(
                 salon.getId(),
                 salon.getName(),
                 salon.getAddress().getDistrict(),
                 salon.getRating(),
-                generatePreviewPhoto(salon.getPhotos().get(0))
+                photoUrl
         );
     }
 

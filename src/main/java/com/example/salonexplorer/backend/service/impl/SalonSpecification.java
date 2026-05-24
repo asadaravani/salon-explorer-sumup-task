@@ -2,12 +2,18 @@ package com.example.salonexplorer.backend.service.impl;
 
 import com.example.salonexplorer.backend.entity.Salon;
 import org.springframework.data.jpa.domain.Specification;
+import java.util.List;
 
 public class SalonSpecification {
-    public static Specification<Salon> districtEquals(String district) {
-        return (root, query, cb) ->
-                district == null ? null :
-                        cb.equal(root.get("address").get("district"), district);
+    public static Specification<Salon> districtIn(List<String> districts) {
+        return (root, query, cb) -> {
+            if (districts == null || districts.isEmpty()) {
+                return null;
+            }
+            return root.get("address")
+                    .get("district")
+                    .in(districts);
+        };
 
     }
 

@@ -11,7 +11,7 @@ import java.util.List;
 public interface SalonService {
     SalonDetailedDto getByIdDetailed(Long id);
 
-    Page<SalonPreviewDto> getAllPreview(String district, String search, Double minRating, Pageable pageable);
+    Page<SalonPreviewDto> getAllPreview(List<String> districts, String search, Double minRating, Pageable pageable);
 
     List<DistrictDto> findDistrictStats();
 }
