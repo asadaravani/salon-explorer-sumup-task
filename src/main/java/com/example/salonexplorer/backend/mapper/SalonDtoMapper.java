@@ -40,9 +40,7 @@ public class SalonDtoMapper {
                 generatePreviewPhoto(salon.getPhotos().get(0))
         );
     }
-    public DistrictDto mapToDistrictDto(Salon salon) {
 
-    }
     private String generatePreviewPhoto(Photo photo) {
         if (photo == null || photo.getName() == null)
             return null;

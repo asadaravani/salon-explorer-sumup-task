@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -32,7 +33,12 @@ public class SalonPersistenceService implements SalonService {
 
     @Override
     public Page<SalonPreviewDto> getAllPreview(String district, String search, Double minRating, Pageable pageable){
-        return repository.findAll(pageable)
+        Specification<Salon> spec = Specification
+                .where(SalonSpecification.districtEquals(district))
+                .and(SalonSpecification.nameOrTypeLike(search))
+                .and(SalonSpecification.ratingGreaterThan(minRating));
+
+        return repository.findAll(spec,pageable)
                 .map(mapper::mapToPreviewDto);
     }
 
@@ -47,5 +53,9 @@ public class SalonPersistenceService implements SalonService {
     private void save(Salon salon){
         System.err.println(salon.toString());
         repository.save(salon);
+    }
+
+    public boolean hasData(){
+        return repository.count() > 0;
     }
 }
