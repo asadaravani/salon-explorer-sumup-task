@@ -25,6 +25,9 @@ public class SalonSyncService implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        if (salonPersistenceService.hasData())
+            return;
+
         List<GooglePlaceDto> list = searchWithQueries();
         List<GooglePlaceDto> deduplicatedList = deduplicate(list);
         List<Salon> entities = mapper.toEntities(deduplicatedList);
