@@ -1,6 +1,19 @@
 spring:
   application:
     name: salon-explorer
+  datasource:
+    url: jdbc:postgresql://localhost:5432/salon_explorer
+    username: beganov
+    password: your_password
 
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: false
+
+    properties:
+      hibernate:
+        format_sql: false
 google:
   api: AIzaSyD5GXfdq7cB7n64j2R5hej7Et2W26Bp57k

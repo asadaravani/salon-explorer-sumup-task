@@ -5,7 +5,10 @@ import com.example.salonexplorer.backend.client.dto.GooglePlaceDto;
 import com.example.salonexplorer.backend.client.dto.GooglePlacesResponseDto;
 import com.example.salonexplorer.backend.entity.Salon;
 import com.example.salonexplorer.backend.mapper.GooglePlaceDtoMapper;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,15 +17,20 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class SalonImportService {
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+public class SalonSyncService implements CommandLineRunner {
     GooglePlacesClient client;
     GooglePlaceDtoMapper mapper;
+    SalonPersistenceService salonPersistenceService;
 
-    public List<Salon> importAll(){
+    @Override
+    public void run(String... args) throws Exception {
         List<GooglePlaceDto> list = searchWithQueries();
         List<GooglePlaceDto> deduplicatedList = deduplicate(list);
-        return mapper.toEntities(deduplicatedList);
+        List<Salon> entities = mapper.toEntities(deduplicatedList);
+        salonPersistenceService.saveAll(entities);
     }
+
     private List<GooglePlaceDto> deduplicate(List<GooglePlaceDto> list){
         Map<String, GooglePlaceDto> map = new HashMap<>();
         for(GooglePlaceDto dto : list){
