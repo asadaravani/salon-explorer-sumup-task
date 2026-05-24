@@ -32,9 +32,10 @@ public class SalonPersistenceService implements SalonService {
     }
 
     @Override
-    public Page<SalonPreviewDto> getAllPreview(String district, String search, Double minRating, Pageable pageable){
+    public Page<SalonPreviewDto> getAllPreview(List<String> districts, String search, Double minRating, Pageable pageable){
+        List<String> safeDistricts = (districts == null || districts.isEmpty()) ? null : districts;
         Specification<Salon> spec = Specification
-                .where(SalonSpecification.districtEquals(district))
+                .where(SalonSpecification.districtIn(safeDistricts))
                 .and(SalonSpecification.nameOrTypeLike(search))
                 .and(SalonSpecification.ratingGreaterThan(minRating));
 
