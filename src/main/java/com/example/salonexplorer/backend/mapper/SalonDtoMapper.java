@@ -47,6 +47,39 @@ public class SalonDtoMapper {
         );
     }
 
+    public Salon updateSalon(SalonUpdateDto updateDto,  Salon salon) {
+        salon.setName(updateDto.name());
+        salon.getAddress().setDistrict(updateDto.district());
+        salon.setPhoneNumber(updateDto.phoneNumber());
+        salon.setWebsiteUrl(updateDto.websiteUrl());
+        salon.setGMapsUri(updateDto.googleMapsUrl());
+        salon.setUserRatingCount(updateDto.userRatingCount());
+        salon.setRating(updateDto.rating());
+        salon.setTypes(updateDto.types());
+        salon.setPhotos(removePhotos(salon.getPhotos(), updateDto.photosUrlsToRemove()));
+        return salon;
+    }
+
+    private List<Photo> removePhotos(List<Photo> photos, List<String> photosToRemove) {
+        if (photosToRemove == null || photosToRemove.isEmpty()) {
+            return photos;
+        }
+        List<Photo> result = new ArrayList<>();
+        for (Photo photo : photos) {
+            boolean shouldRemove = false;
+            for (String photoUrl : photosToRemove) {
+                if (photoUrl.contains(photo.getName())) {
+                    shouldRemove = true;
+                    break;
+                }
+            }
+            if (!shouldRemove) {
+                result.add(photo);
+            }
+        }
+        return result;
+    }
+
     private String generatePreviewPhoto(Photo photo) {
         if (photo == null || photo.getName() == null)
             return null;

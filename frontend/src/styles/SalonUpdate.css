@@ -1,0 +1,255 @@
+
+.profile-page.edit-mode {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #f7f7f8;
+    border-radius: 8px;
+    min-height: 100vh;
+}
+
+
+.profile-header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+.profile-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ccc;
+}
+
+
+.profile-info {
+    flex-grow: 1;
+}
+
+.profile-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+.edit-input {
+    background: #ffffff;
+    border: 1px solid #c2c2c2;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #222;
+    transition: all 0.2s ease;
+}
+
+.edit-input:focus {
+    outline: none;
+    border-color: #0095f6;
+    box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
+}
+
+
+.edit-h1 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.edit-number {
+    width: 60px;
+    padding: 4px 6px;
+}
+
+.edit-text {
+    width: 140px;
+    padding: 4px 6px;
+}
+
+
+.edit-actions-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.edit-actions-grid label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+}
+
+.edit-actions-grid label span {
+    width: 90px;
+
+.edit-actions-grid input {
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+
+.tags-edit-section {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tags-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.edit-tags {
+    width: 100%;
+}
+
+
+.photo-feed {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+.photo-item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    border-radius: 4px;
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.2s ease;
+}
+
+.photo-item:hover img {
+    transform: scale(1.03);
+}
+
+
+.photo-item.marked img {
+    filter: brightness(0.3) grayscale(30%);
+}
+
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.15); /* Subtle red tint */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: bold;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+
+    pointer-events: none;
+    animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.photo-feed img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transition: 0.2s ease;
+    border-radius: 4px;
+}
+
+.photo-feed img:hover {
+    transform: scale(1.03);
+}
+
+
+.home-btn {
+    position: sticky;
+    top: 10px;
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: white;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    text-decoration: none;
+    color: #222;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: 0.2s ease;
+}
+
+.home-btn:hover {
+    background: #f5f5f5;
+}
+
+.cancel-btn {
+    margin-right: 12px;
+}
+
+.edit-btn {
+    position: sticky;
+    top: 10px;
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+
+.save-btn {
+    background: #0095f6;
+    color: white;
+    border-color: #0095f6;
+}
+
+.save-btn:hover {
+    background: #007bb5;
+    border-color: #007bb5;
+}
+
+
+.loading {
+    padding: 40px;
+    text-align: center;
+}}
