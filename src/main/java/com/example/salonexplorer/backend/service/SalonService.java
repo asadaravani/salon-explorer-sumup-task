@@ -3,6 +3,7 @@ package com.example.salonexplorer.backend.service;
 import com.example.salonexplorer.backend.api.dto.DistrictDto;
 import com.example.salonexplorer.backend.api.dto.SalonDetailedDto;
 import com.example.salonexplorer.backend.api.dto.SalonPreviewDto;
+import com.example.salonexplorer.backend.api.dto.SalonUpdateDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -14,4 +15,6 @@ public interface SalonService {
     Page<SalonPreviewDto> getAllPreview(List<String> districts, String search, Double minRating, Pageable pageable);
 
     List<DistrictDto> findDistrictStats();
+
+    void updateSalon(Long id, SalonUpdateDto updateDto);
 }

@@ -3,6 +3,7 @@ package com.example.salonexplorer.backend.api.controller;
 import com.example.salonexplorer.backend.api.dto.DistrictDto;
 import com.example.salonexplorer.backend.api.dto.SalonDetailedDto;
 import com.example.salonexplorer.backend.api.dto.SalonPreviewDto;
+import com.example.salonexplorer.backend.api.dto.SalonUpdateDto;
 import com.example.salonexplorer.backend.service.SalonService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +31,7 @@ public class SalonController {
         return service.getAllPreview(districts, search, minRating, PageRequest.of(page, size));
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public SalonDetailedDto getSalonById(@PathVariable Long id) {
         return service.getByIdDetailed(id);
     }
@@ -38,5 +39,10 @@ public class SalonController {
     @GetMapping("/districts")
     public List<DistrictDto> getDistricts() {
         return service.findDistrictStats();
+    }
+
+    @PutMapping("/{id}")
+    public void updateSalon(@PathVariable Long id, @RequestBody SalonUpdateDto updateDto) {
+        service.updateSalon(id, updateDto);
     }
 }

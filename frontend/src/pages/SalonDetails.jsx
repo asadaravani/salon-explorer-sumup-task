@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 function SalonDetails() {
     const { id } = useParams();
     const [salon, setSalon] = useState(null);
+    const [editMode, setEditMode] = useState(false);
 
     useEffect(() => {
         fetch(`http://localhost:8080/api/salons/${id}`)
@@ -24,7 +25,7 @@ function SalonDetails() {
             <Link to="/" className="home-btn">
                 ←Back to Home
             </Link>
-            <Link to="/" className="edit-btn">
+            <Link to={`/salon/${id}/edit`} className="edit-btn">
                 Edit
             </Link>
             {/* HEADER */}
@@ -63,7 +64,6 @@ function SalonDetails() {
                 ))}
             </div>
 
-            {/* PHOTO FEED */}
             <div className="photo-feed">
                 {salon.photos?.slice(0, 9).map((p, i) => (
                     <img key={i} src={p.path} alt="" />
