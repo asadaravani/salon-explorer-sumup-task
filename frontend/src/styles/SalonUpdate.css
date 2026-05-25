@@ -102,7 +102,7 @@
 
 .edit-actions-grid label span {
     width: 90px;
-
+}
 .edit-actions-grid input {
     flex-grow: 1;
     max-width: 400px;
@@ -252,4 +252,4 @@
 .loading {
     padding: 40px;
     text-align: center;
-}}
+}
